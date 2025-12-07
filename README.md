@@ -34,8 +34,50 @@ https://github.com/user-attachments/assets/0901d274-f6ae-46ef-a0fd-3c4fba4f76dc
 
 </div>
 
-2025-09-05: VibeVoice is an open-source research framework intended to advance collaboration in the speech synthesis community. After release, we discovered instances where the tool was used in ways inconsistent with the stated intent. Since responsible use of AI is one of Microsoft’s guiding principles, we have disabled this repo until we are confident that out-of-scope use is no longer possible.
+2025-09-05: VibeVoice is an open-source research framework intended to advance collaboration in the speech synthesis community. After release, we discovered instances where the tool was used in ways inconsistent with the stated intent. Since responsible use of AI is one of Microsoft's guiding principles, we have disabled this repo until we are confident that out-of-scope use is no longer possible.
 
+---
+
+## 🪟 Windows Installation (Fork)
+
+> **This is a Windows-compatible fork of [Microsoft's VibeVoice](https://github.com/microsoft/VibeVoice)**
+
+### What's Changed
+
+The original repository has compatibility issues on Windows due to path handling. This fork includes:
+
+| File | Change | Description |
+|------|--------|-------------|
+| `demo/web/app.py` | Path fix | HuggingFace model IDs are kept as strings instead of being converted to `Path()` objects, which would break `microsoft/VibeVoice-Realtime-0.5B` by converting `/` to `\` on Windows |
+| `install.bat` | New | Automated Windows installer with CUDA detection |
+| `WINDOWS_SETUP.md` | New | Complete Windows documentation |
+
+### Quick Install on Windows
+
+```batch
+git clone https://github.com/hydropix/VibeVoice.git
+cd VibeVoice
+install.bat
+```
+
+The installer will:
+- Check Python 3.9+ installation
+- Create a virtual environment
+- Detect NVIDIA GPU and offer CUDA version selection (11.8, 12.1, 12.4)
+- Install PyTorch and all dependencies
+- Create `run_demo.bat` for easy launching
+
+### Run the Demo
+
+```batch
+run_demo.bat
+```
+
+Then open http://localhost:3000 in your browser.
+
+For detailed instructions, troubleshooting, and manual installation, see **[WINDOWS_SETUP.md](WINDOWS_SETUP.md)**.
+
+---
 
 ### Overview
 
